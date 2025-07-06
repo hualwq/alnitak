@@ -9,3 +9,12 @@ func IsFileExists(path string) bool {
 	}
 	return true
 }
+
+// ReadFile 读取文件内容
+func ReadFile(filePath string) (string, error) {
+	content, err := os.ReadFile(filePath)
+	if err != nil {
+		return "", err
+	}
+	return string(content), nil
+}

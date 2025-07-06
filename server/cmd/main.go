@@ -3,6 +3,7 @@ package main
 import (
 	"flag"
 
+	"go.uber.org/zap"
 	"interastral-peace.com/alnitak/internal/cron"
 	"interastral-peace.com/alnitak/internal/global"
 	"interastral-peace.com/alnitak/internal/initialize"
@@ -43,6 +44,16 @@ func main() {
 	initialize.InitCacheData()
 	// 初始化casbin
 	global.Casbin = casbin.InitCasbin()
+	
+	// 初始化敏感词过滤器
+	if err := service.InitSensitiveFilter(); err != nil {
+		zap.L().Error("敏感词过滤器初始化失败", zap.String("module", "main"), zap.String("err", err.Error()))
+	}
+	
+	// 从文件加载敏感词到数据库
+	if err := service.LoadSensitiveWordsFromFile("../data/sensitive/dic.txt"); err != nil {
+		zap.L().Error("敏感词文件加载失败", zap.String("module", "main"), zap.String("err", err.Error()))
+	}
 
 	// 手动执行一次刷新热点视频
 	cron.RefreshPopular()

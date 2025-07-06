@@ -7,3 +7,114 @@ node_modules
 *.njsproj
 *.sln
 *.sw?
+
+# 环境变量文件
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+.env.*.local
+
+# 配置文件
+config/
+conf/
+*.config.js
+*.config.ts
+*.config.json
+application.*.yaml
+application.*.yml
+application.*.json
+application.*.toml
+
+# 日志文件
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# 运行时数据
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# 覆盖率目录
+coverage/
+*.lcov
+
+# nyc测试覆盖率
+.nyc_output
+
+# 依赖目录
+node_modules/
+jspm_packages/
+
+# TypeScript缓存
+*.tsbuildinfo
+
+# 可选的npm缓存目录
+.npm
+
+# 可选的eslint缓存
+.eslintcache
+
+# 微前端模块的bundle文件
+.single-spa
+
+# 本地环境文件
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# 编辑器目录和文件
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# 操作系统生成的文件
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# 临时文件
+*.tmp
+*.temp
+
+# 构建输出
+dist/
+build/
+out/
+
+# 缓存目录
+.cache/
+.parcel-cache/
+
+# 数据库文件
+*.db
+*.sqlite
+*.sqlite3
+
+# 密钥和证书
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx
+
+# 上传文件目录
+upload/
+uploads/
+
+# 敏感数据目录
+data/sensitive/
+
