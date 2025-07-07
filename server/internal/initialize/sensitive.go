@@ -471,3 +471,13 @@ func (filter *Filter) Validate(text string) (bool, string) {
 func (filter *Filter) RemoveNoise(text string) string {
 	return filter.noise.ReplaceAllString(text, "")
 }
+
+// NewSensitiveFilter 返回一个新的敏感词过滤器实例
+func NewSensitiveFilter() *Filter {
+	return New()
+}
+
+// InitializeSensitiveWords 初始化敏感词过滤器（移除对service的依赖）
+func InitializeSensitiveWords() *Filter {
+	return NewSensitiveFilter()
+}

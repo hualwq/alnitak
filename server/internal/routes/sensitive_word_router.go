@@ -3,7 +3,7 @@ package routes
 import (
 	"github.com/gin-gonic/gin"
 	"interastral-peace.com/alnitak/internal/api/v1"
-	"interastral-peace.com/alnitak/internal/middleware"
+	// "interastral-peace.com/alnitak/internal/middleware"
 )
 
 func CollectSensitiveWordRoutes(r *gin.RouterGroup) {
@@ -14,7 +14,7 @@ func CollectSensitiveWordRoutes(r *gin.RouterGroup) {
 	sensitiveWordGroup.POST("/replace", api.ReplaceSensitiveWord) // 替换敏感词
 
 	// 需要管理员权限的接口
-	sensitiveWordAuth := sensitiveWordGroup.Use(middleware.Auth())
+	sensitiveWordAuth := sensitiveWordGroup.Use()
 	{
 		// 敏感词管理
 		sensitiveWordAuth.POST("/add", api.AddSensitiveWord)         // 添加敏感词

@@ -30,6 +30,9 @@ func AddArticleComment(ctx *gin.Context, addCommentReq dto.AddCommentReq) (vo.Ad
 		ReplyUserName: addCommentReq.ReplyUserName,
 		Type:          global.CONTENT_TYPE_ARTICLE,
 	}
+
+	comment.Content = SensitiveFilter.Replace(comment.Content, []rune("*")[0])
+
 	if err := global.Mysql.Create(&comment).Error; err != nil {
 		utils.ErrorLog("创建评论失败", "comment", err.Error())
 		return vo.AddCommentResp{}, errors.New("评论失败")
